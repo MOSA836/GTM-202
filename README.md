@@ -17,7 +17,7 @@ This repository serves as a personal archive of my self-study journey in topolog
 
 ### Concrete Covering Space Examples
 - **Problem 11-2**: A rigorous proof that the natural projection $q: S^n \to \mathbb{R}P^n$ is a two-sheeted covering map for any $n \ge 1$.
-- **Problem 11-3**: Analysis of the Riemann surface model $S = \{(z, w) \in \mathbb{C}^2 : w^2 = z, w \neq 0\}$. Show that the coordinate projection $\pi_1: \mathbb{C}^2 \to \mathbb{C}$ restricts to a two-sheeted covering map $q: S \to \mathbb{C} \setminus \{0\}$.
+- **Problem 11-3**: Analysis of the Riemann surface model $S = \{(z, w) \in \mathbb{C}^2 : w^2 = z, w \neq 0\}$. Show that the coordinate projection $\pi_1: \mathbb{C}^2 \to \mathbb{C}$ restricts to a two-sheeted covering map $q: S \to \mathbb{C} \setminus {0}$.
 
 ### Compactness and Proper Maps
 - **Problem 11-10**: A covering map is proper if and only if it is a finite-sheeted covering.
