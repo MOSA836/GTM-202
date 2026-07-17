@@ -4,8 +4,8 @@ This repository serves as a personal archive of my self-study journey in topolog
 
 ## Contents
 
-- **[algebraic-topology-exercises.pdf](./algebraic-topology-exercises.pdf)**: Compiled PDF of the solutions, available for direct online reading.
-- **[algebraic-topology-exercises.tex](./algebraic-topology-exercises.tex)**: Full LaTeX source code.
+- **[algebraic-topology-exercises.pdf](./GTM_202_chapter_11.pdf)**: Compiled PDF of the solutions, available for direct online reading.
+- **[algebraic-topology-exercises.tex](./GTM_202_chapter_11.tex)**: Full LaTeX source code.
 
 ## Selected Solved Problems
 
