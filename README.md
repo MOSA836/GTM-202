@@ -1,6 +1,6 @@
 # Topology Study Notes & Solutions
 
-This repository serves as a personal archive of my self-study journey in topology, focusing on point-set and algebraic topology. It contains rigorous, independently written proofs for various textbook exercises.
+An archive of exercise solutions and proofs from my journey learning topology. Uploaded here for personal backup and progress tracking.
 
 ## Contents
 
