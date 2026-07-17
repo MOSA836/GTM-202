@@ -27,4 +27,4 @@ This repository serves as a personal archive of my self-study journey in topolog
 ## Compilation Details
 
 - **Compiler**: XeLaTeX / PDFLaTeX
-- **Packages Used**: `amsmath`, `amssymb`, `amsthm`, `geometry`
+- **Packages Used**: `amsmath`, `amssymb`, `amsthm`, `geometry`, `enumerate`
