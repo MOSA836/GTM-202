@@ -1,0 +1,503 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{geometry}
+\usepackage{enumerate} % Convenient for generating (a)(b)(c) labels
+\geometry{margin=1in}
+
+% --- Custom Problem Environment for Continuous Extension ---
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}
+\newenvironment{problem}[1][]{\begin{prob}[#1]\normalfont}{\end{prob}\vspace{1.5em}}
+
+\begin{document}
+
+% --- Document Main Header ---
+\begin{center}
+    {\LARGE \bf \sffamily Solutions to Introduction to Topological Manifolds} \\
+    \vspace{0.4em}
+    {\Large \bf \sffamily Chapter 11: Covering Maps} \\
+    \vspace{1.5em}
+\end{center}
+
+% =========================================================================
+% PROBLEM 11-1
+% =========================================================================
+\begin{problem}[11-1]
+Let $q: E \to X$ be a covering map. 
+\begin{enumerate}[(a)]
+    % ----------- Part (a) Begin -----------
+    \item Show that if $X$ is a Hausdorff space, then $E$ is too.
+    
+    \begin{proof}
+    Let $e_1, e_2 \in E$ be two distinct points ($e_1 \neq e_2$). Denote their projections under the covering map $q$ as $x = q(e_1)$ and $y = q(e_2)$. We split the proof into two exhaustive cases based on whether they belong to the same fiber:
+
+        \item[$1^\circ$] \textbf{$e_1$ and $e_2$ lie in the same fiber (i.e., $x = y$):} 
+        Since $q$ is a covering map, there exists an evenly covered open neighborhood $U \subset X$ containing $x$. By definition, its preimage decomposes into a disjoint union of open subsets in $E$:
+        \[
+        q^{-1}(U) = \coprod_{\alpha} V_{\alpha},
+        \]
+        where each $V_{\alpha}$ is an open set mapped homeomorphically onto $U$ by $q$. 
+
+        Since $e_1 \neq e_2$ but they belong to the same fiber $q^{-1}(x)$, they cannot belong to the same local sheet. Thus, there exist distinct indices $\alpha \neq \beta$ such that $e_1 \in V_{\alpha}$ and $e_2 \in V_{\beta}$. 
+
+        By the definition of a disjoint union, $V_{\alpha} \cap V_{\beta} = \emptyset$. Since $V_{\alpha}$ and $V_{\beta}$ are open in $E$, they provide the required disjoint open neighborhoods separating $e_1$ and $e_2$.
+
+        \item[$2^\circ$] \textbf{$e_1$ and $e_2$ lie in different fibers (i.e., $x \neq y$):}
+        Since $X$ is a Hausdorff space and $x \neq y$, there exist disjoint open neighborhoods $U_x, U_y \subset X$ for $x$ and $y$ respectively, satisfying $U_x \cap U_y = \emptyset$.
+
+        By the continuity of $q$, the preimages $q^{-1}(U_x)$ and $q^{-1}(U_y)$ are open subsets in $E$. Clearly, $e_1 \in q^{-1}(U_x)$ and $e_2 \in q^{-1}(U_y)$.
+
+        We claim that these preimages are disjoint. Suppose for contradiction that there exists a point $e_3 \in q^{-1}(U_x) \cap q^{-1}(U_y)$. Applying $q$ yields $q(e_3) \in U_x$ and $q(e_3) \in U_y$, which implies $q(e_3) \in U_x \cap U_y$. This directly contradicts $U_x \cap U_y = \emptyset$. Therefore, $q^{-1}(U_x) \cap q^{-1}(U_y) = \emptyset$.
+
+        Since both preimages are open in $E$, they serve as the desired disjoint open neighborhoods separating $e_1$ and $e_2$.
+
+        \medskip
+        In either case, $e_1$ and $e_2$ can be separated by disjoint open neighborhoods. Consequently, the covering space $E$ is a Hausdorff space.
+    \end{proof}
+    % ----------- Part (a) End -----------
+
+    \vspace{1em} % Spacing between sub-problems
+    
+    % ----------- Part (b) Begin -----------
+    \item Show that if $X$ is an $n$-manifold, then $E$ is too.
+    
+    \begin{proof}
+    To show that $E$ is an $n$-manifold, we must verify that $E$ is a Hausdorff space, locally Euclidean of dimension $n$, and has a second-countable basis. We check these three conditions sequentially:
+
+        \item[$1^\circ$] \textbf{Hausdorff:} 
+        By part (a), since $X$ is a Hausdorff space and $q: E \to X$ is a covering map (which is a local homeomorphism), it follows directly that $E$ is also a Hausdorff space.
+    
+        \item[$2^\circ$] \textbf{Locally Euclidean:} 
+        Let $e \in E$ be an arbitrary point, and let $x = q(e) \in X$. Since $X$ is an $n$-manifold, there exists an open neighborhood $U'$ of $x$ that is homeomorphic to an open subset of $\mathbb{R}^n$. 
+        
+        By the definition of a covering map, there exists an evenly covered neighborhood $U$ of $x$. Let $W = U \cap U'$. Then $W$ is still an open neighborhood of $x$ and is homeomorphic to an open subset of $\mathbb{R}^n$. Since $W \subset U$, its preimage decomposes into a disjoint union of open slices:
+        \[
+        q^{-1}(W) = \bigsqcup_{\alpha \in A} G_\alpha.
+        \]
+        There exists a unique slice $G_{\alpha_0}$ containing $e$. Since $q|_{G_{\alpha_0}}: G_{\alpha_0} \to W$ is a homeomorphism, and $W$ is homeomorphic to an open subset of $\mathbb{R}^n$, it follows that $G_{\alpha_0}$ is an open neighborhood of $e$ in $E$ that is homeomorphic to an open subset of $\mathbb{R}^n$. Thus, $E$ is locally Euclidean of dimension $n$.
+    
+        \item[$3^\circ$] \textbf{Second-Countable:} 
+        Let $\mathcal{B}$ be a countable basis for the topology of $X$. Without loss of generality, we can assume that each $K \in \mathcal{B}$ is an evenly covered neighborhood (since evenly covered neighborhoods form a basis for $X$). 
+        
+        For each $K \in \mathcal{B}$, its preimage decomposes into a disjoint union of open slices:
+        \[
+        q^{-1}(K) = \bigsqcup_{\alpha \in A_K} (G_K)_\alpha.
+        \]
+        Since $X$ is second-countable and $q$ is a covering map, the fiber over any point is at most countable, which implies that the index set $A_K$ is at most countable for each $K \in \mathcal{B}$. We define a collection of open sets in $E$ by:
+        \[
+        \mathcal{B}_E = \{ (G_K)_\alpha \mid K \in \mathcal{B}, \alpha \in A_K \}.
+        \]
+        Since $\mathcal{B}_E$ is a countable union of countable sets, $\mathcal{B}_E$ is a countable collection.
+        
+        Next, we prove that $\mathcal{B}_E$ is a basis for $E$. Let $V \subset E$ be an arbitrary open subset and let $e \in V$. Since $q$ is a local homeomorphism, there exists an open neighborhood $V_e \subset V$ of $e$ such that $q|_{V_e}: V_e \to q(V_e)$ is a homeomorphism. Since $q(e) \in q(V_e)$ and $q(V_e)$ is open in $X$, there exists a basis element $K \in \mathcal{B}$ such that $q(e) \in K \subset q(V_e)$. 
+        
+        Lifting this inclusion back to the slice containing $e$, we obtain:
+        \[
+        e \in (G_K)_{\alpha_0} \subset V_e \subset V,
+        \]
+        where $(G_K)_{\alpha_0}$ is the unique slice of $q^{-1}(K)$ containing $e$. Therefore, $V$ can be written as a union of elements from $\mathcal{B}_E$. This proves that $\mathcal{B}_E$ is a countable basis for $E$, so $E$ is second-countable.
+
+    \medskip
+    In any case, $E$ satisfies the Hausdorff property, the local Euclidean property of dimension $n$, and second-countability. Consequently, the covering space $E$ is an $n$-manifold.
+    \end{proof}
+    % ----------- Part (b) End -----------
+
+    \vspace{2em} % Spacing between problems
+    \item Show that if $E$ is an $n$-manifold and $X$ is Hausdorff, then $X$ is an $n$-manifold.
+    
+    \begin{proof}
+    To show that $X$ is an $n$-manifold, we need to verify that $X$ is Hausdorff, locally Euclidean of dimension $n$, and second-countable.
+
+        \item[$1^\circ$] \textbf{Hausdorff:} 
+        By assumption, $X$ is already a Hausdorff space.
+
+        \item[$2^\circ$] \textbf{Locally Euclidean:} 
+        Let $x \in X$. Since $q: E \to X$ is a covering map, there exists an evenly covered neighborhood $U \subset X$ of $x$. The preimage $q^{-1}(U)$ decomposes into a disjoint union of open slices:
+        \[
+        q^{-1}(U) = \bigsqcup_{\alpha \in A} G_\alpha,
+        \]
+        where each slice $G_\alpha$ is homeomorphic to $U$ via the restriction of $q$. 
+
+        Since $E$ is an $n$-manifold, for any point $e \in G_\alpha$, there exists an open neighborhood $V_e \subset G_\alpha$ that is homeomorphic to an open subset of $\mathbb{R}^n$. The homeomorphism from $G_\alpha$ to $U$ allows us to transfer this local Euclidean structure back to $U$. Thus, every point in $U$, including $x$, has a neighborhood homeomorphic to an open subset of $\mathbb{R}^n$, proving that $X$ is locally Euclidean of dimension $n$.
+
+        \item[$3^\circ$] \textbf{Second-Countable:} 
+        Since $E$ is second-countable, let $\mathcal{B}_E$ be a countable basis for the topology of $E$. For each basis element $(G_K)_\alpha \in \mathcal{B}_E$, its image under the covering map, $q((G_K)_\alpha)$, is an open set in $X$. Define:
+        \[
+        \mathcal{B}_X = \{ q((G_K)_\alpha) \mid (G_K)_\alpha \in \mathcal{B}_E \}.
+        \]
+        Since $\mathcal{B}_E$ is countable and the covering map has at most countable fibers, $\mathcal{B}_X$ is also countable.
+
+    \end{proof}
+
+
+\end{enumerate}
+\end{problem}
+
+
+% =========================================================================
+% NEXT PROBLEM TEMPLATE
+% Copy or uncomment the block below to append new problems (e.g., Problem 11-2)
+% =========================================================================
+% \begin{problem}[11-2]
+% Prove that for any $n \geq 1$, the map $q: S^n \to P^n$ by sending each point $x$ in the sphere to the line 
+% through the origin and $x$, thought of as a point in $\mathbb{P}^n$, is a covering map. 
+
+% \begin{proof}
+% Obviously, $q$ is surjective. To prove that $q: S^n \to P^n$ is a covering map, we need to show that for every 
+% point $[x] = {-x, x} \in P^n$, where $x, -x \in S^n \subset \mathbb{R}^{n+1}$, there exists an open neighborhood $U \subset P^n$ of $[x]$ such that the preimage 
+% $q^{-1}(U)$ is a disjoint union of open sets in $S^n$, each of which is homeomorphic to $U$ via the 
+% restriction of $q$.
+% In fact, by the definition of $q$, for arbitrary $x \in S^n$, we have $q(x) = [x]$. Let $U \subset \mathbb{S}^n$ 
+% be an small enough open neighborhood of $x$ such that $U \bigcap -U = \emptyset$, where $-U = \{-y \mid y \in U\}$.
+% Without loss of generality, assume that $U$ is the open upper hemisphere of $S^n$ centered at $x$. Then $-U$ is the open lower hemisphere of $S^n$ centered at $-x$.
+% So let $V = q(U) \subset P^n$. Then $q^{-1}(V) = U \bigcup -U$, which is a disjoint union of two open sets in $S^n$.
+% Moreover, $q|_{U}: U \to V$, $q|_{-U}: -U \to V$ are homeomorphisms onto $V$ respectively. Therefore, $q: S^n \to P^n$ is a covering map.
+
+% \end{proof}
+% \end{problem}
+
+% \end{document}
+
+\begin{problem}[11-2]
+Prove that for any $n \geq 1$, the map $q: S^n \to \mathbb{P}^n$ defined by sending each point $x \in S^n$ to the 
+line 
+through the origin and $x$ is a covering map. 
+
+\begin{proof}
+By definition, the real projective space $\mathbb{P}^n$ is equipped with the quotient topology induced by the map 
+$q: S^n \to \mathbb{P}^n$, which identifies antipodal points, i.e., $q^{-1}([x]) = \{x, -x\}$ for any $x \in S^n$. 
+Thus, $q$ is naturally continuous and surjective.
+
+To prove that $q$ is a covering map, for any point $[x] \in \mathbb{P}^n$, we choose one of its preimages 
+$x \in S^n \subset \mathbb{R}^{n+1}$. Consider the open upper hemisphere centered at $x$ within $S^n$, defined 
+as:
+$$ U = \{ y \in S^n \mid y \cdot x > 0 \} $$
+where $y \cdot x$ denotes the standard inner product in $\mathbb{R}^{n+1}$. Clearly, $U$ is an open neighborhood 
+of $x$ in $S^n$. Let $-U = \{ -y \mid y \in U \}$. By symmetry, $-U$ is the open lower hemisphere centered at 
+$-x$, and it is clear that $U \cap -U = \emptyset$.
+
+Now, let $V = q(U) \subset \mathbb{P}^n$. To show that $V$ is an open neighborhood of $[x]$, we look at its full 
+preimage under $q$. By the antipodal identification, we have:
+$$ q^{-1}(V) = q^{-1}(q(U)) = U \cup -U $$
+Since both $U$ and $-U$ are open in $S^n$, their union $q^{-1}(V)$ is also open in $S^n$. By the definition of 
+the quotient topology, a subset $V \subset \mathbb{P}^n$ is open if and only if $q^{-1}(V)$ is open in $S^n$. 
+Therefore, $V$ is an open neighborhood of $[x]$ in $\mathbb{P}^n$.
+
+Finally, we examine the restriction $q|_U: U \to V$. 
+\begin{itemize}
+    \item[$1^\circ$] \textbf{Surjectivity:} For any $[y] \in V$, its preimage in $U \cup -U$ must have exactly one
+     representative in $U$ (since $U$ contains exactly one point from each antipodal pair $\{y, -y\}$). Thus, 
+     $q|_U$ is bijective.
+    \item[$2^\circ$] \textbf{Homeomorphism:} Since $q$ is a quotient map and $U \cup -U$ is an open saturated set, 
+    $q$ is an open map. The restriction of an open continuous map to an open set remains open and continuous. 
+    Since $q|_U$ is a bijective, continuous, and open map, it is a homeomorphism from $U$ onto $V$.
+\end{itemize}
+By identical reasoning, $q|_{-U}: -U \to V$ is also a homeomorphism. 
+
+Consequently, for every $[x] \in \mathbb{P}^n$, we have found an open neighborhood $V$ whose preimage 
+$q^{-1}(V) = U \sqcup -U$ is a disjoint union of open sets in $S^n$, each mapped homeomorphically onto $V$ by $q$. 
+Thus, $q: S^n \to \mathbb{P}^n$ is a covering map.
+
+\end{proof}
+\end{problem}
+
+% =========================================================================
+% \begin{problem}[11-3]
+% Let $S$ be the following subset of $\mathbb{C}^2$:
+% $$ S = \{ (z,w) \in \mathbb{C}^2 \mid w^2 = z, w \neq 0 \} $$
+% (It is the graph of the two-valued complex square root “function” described
+% in Chapter 1, with the origin removed.) Show that the projection $\pi_1: \mathbb{C}^2 \to \mathbb{C}$ given by 
+% $\pi_1(z,w) = z$ restricts to a two-sheeted covering map $q: S \to \mathbb{C} \setminus \{0\}$.
+
+% \begin{proof}
+% By definition, for arbitrary $(z,w) \in S$, we have $q(z,w)= z \in \mathbb{C} \setminus \{0\}$. To show that $q$ 
+% is a covering map, we must verify that $q$ is continuous, surjective, and for every 
+% $z_0 \in \mathbb{C} \setminus \{0\}$, there exists an open neighborhood $U$ of $z_0$ such that $q^{-1}(U)$ is a 
+% disjoint union of open sets in $S$, each mapped homeomorphically onto $U$ by $q$. 
+
+% \begin{itemize}
+%     \item[$1^\circ$] \textbf{Continuity:} The projection map $\pi_1: \mathbb{C}^2 \to \mathbb{C}$ is continuous, 
+%     and $S$ is a subspace of $\mathbb{C}^2$. Therefore, the restriction $q = \pi_1|_S$ is also continuous.
+%     \item[$2^\circ$] \textbf{Surjectivity:} For any $z_0 \in \mathbb{C} \setminus \{0\}$, we can find two distinct 
+%     points $\sqrt{z_0}$ and $-\sqrt{z_0}$ in $S$ such that $q(z_0, \pm \sqrt{z_0}) = z_0$. 
+%     Thus, $q$ is surjective.
+%     \item[$3^\circ$] \textbf{Evenly Covered Neighborhoods:} For any $z_0 \in \mathbb{C} \setminus \{0\}$, the fiber 
+%     of $q$ over $z_0$ is given by $\{(z_0, \pm \sqrt{z_0})\}$. Let a neigborhood $U\subset \mathbb{C} \setminus \{0\}$ of $z_0$, 
+%     $V_1= \{(z,w)\mid w^2 = z, z \in U , \text{Re}(w/w_0) > 0\}$, where $V\subset S$ as $z_0 \in \mathbb{C} \setminus \{0\}$, is a 
+%     neighborhood containing $(z_0, \sqrt{z_0})$, so obviously $V_2= \{(z,w)\mid w^2 = z, z \in U. \text{Re}(w/w_0) > 0\}\subset S$ is a neigborhood containing $(z_0, -\sqrt{z_0})$. So we can 
+%     get $V_1\cap V_2 = \emptyset$ and $V_1 \cup V_2 = q^{-1}(U) =\{(z,w)\mid w^2 = z, z \in U \}$. Moreover, the restrictions
+%     $q|_{V_1}:V_1\rightarrow U$ and $q|_{V_2}:V_2\rightarrow U$ are homeomorphisms since inverse maps by them are continuous.
+ 
+
+% \end {itemize}
+
+
+% \end{proof}
+% \end{problem}
+
+\begin{problem}[11-3]
+Let $S$ be the following subset of $\mathbb{C}^2$:
+$$ S = \{ (z,w) \in \mathbb{C}^2 \mid w^2 = z, w \neq 0 \} $$
+Show that the projection $\pi_1: \mathbb{C}^2 \to \mathbb{C}$ given by 
+$\pi_1(z,w) = z$ restricts to a two-sheeted covering map $q: S \to \mathbb{C} \setminus \{0\}$.
+
+\begin{proof}
+Let $M = \mathbb{C} \setminus \{0\}$. The map $q: S \to M$ is the restriction of the standard coordinate projection $\pi_1: \mathbb{C}^2 \to \mathbb{C}$ to the subspace $S$.
+
+\begin{itemize}
+    \item[$1^\circ$] \textbf{Continuity:} Since the global projection $\pi_1$ is continuous, its restriction 
+    $q = \pi_1|_S$ to the subspace $S$ is automatically continuous.
+    \item[$2^\circ$] \textbf{Surjectivity:} For any $z_0 \in M$, by the fundamental theorem of algebra, the 
+    equation $w^2 = z_0$ has exactly two distinct non-zero solutions, which we denote as $w_0$ and $-w_0$. Thus, 
+    $(z_0, w_0)$ and $(z_0, -w_0)$ both belong to $S$, and $q(z_0, \pm w_0) = z_0$. This proves that $q$ is 
+    surjective, and each fiber $q^{-1}(z_0)$ consists of exactly two distinct points.
+    
+    \item[$3^\circ$] \textbf{Evenly Covered Neighborhoods:} For any $z_0 \in M$, we can express it in polar 
+    coordinates as $z_0 = r_0 e^{i\theta_0}$. We can choose a sufficiently small open disk $U \subset M$ centered 
+    at $z_0$ that does not wrap around the origin (for instance, by restricting the argument to an interval of 
+    length less than $2\pi$, say $\theta \in (\theta_0 - \pi, \theta_0 + \pi)$, limit $U$ in single complex plane, 
+    so that it does not contain the origin). 
+    
+    On this simply connected domain $U$, we can define two well-defined, continuous, and holomorphic single-valued 
+    branches of the complex square root function, denoted by $g_1: U \to \mathbb{C}$ and $g_2: U \to \mathbb{C}$, 
+    where $g_2(z) = -g_1(z)$. By definition, $(g_1(z))^2 = (g_2(z))^2 = z$ for all $z \in U$.
+    
+    Now, we define two subsets of $S$:
+    $$ U_1 = \{ (z, g_1(z)) \in \mathbb{C}^2 \mid z \in U \} $$
+    $$ U_2 = \{ (z, g_2(z)) \in \mathbb{C}^2 \mid z \in U \} $$
+    
+    We verify that $U_1$ and $U_2$ satisfy the conditions for a covering space:
+    \begin{enumerate}
+        \item \textbf{Openness:} $U_1$ and $U_2$ are open in $S$ because they are the graphs of continuous functions 
+        $g_1, g_2$ defined on the open set $U$. Alternatively, $U_1 = S \cap (U \times W_1)$ where $W_1$ is an open 
+        neighborhood around $g_1(z_0)$ excluding $-g_1(z_0)$.
+        \item \textbf{Disjointness:} Since $g_1(z) \neq g_2(z)$ for any $z \in U$ (as $z \neq 0$), we have 
+        $U_1 \cap U_2 = \emptyset$.
+        \item \textbf{Preimage Union:} For any $(z, w) \in q^{-1}(U)$, we have $z \in U$ and $w^2 = z$. Since 
+        $g_1(z)$ and $g_2(z)$ are the only two roots of $w^2 = z$, $w$ must equal either $g_1(z)$ or $g_2(z)$. 
+        Thus, $(z,w) \in U_1 \cup U_2$, meaning $q^{-1}(U) = U_1 \sqcup U_2$.
+        \item \textbf{Homeomorphism:} The restriction $q|_{U_1}: U_1 \to U$ maps $(z, g_1(z)) \mapsto z$. Its 
+        inverse is given by $z \mapsto (z, g_1(z))$, which is continuous since $g_1$ is continuous. Thus, 
+        $q|_{U_1}$ is a homeomorphism. By identical logic, $q|_{U_2}: U_2 \to U$ is also a homeomorphism.
+    \end{enumerate}
+\end{itemize}
+Since every point $z_0 \in \mathbb{C} \setminus \{0\}$ has an evenly covered neighborhood $U$ with exactly two 
+disjoint preimages, $q: S \to \mathbb{C} \setminus \{0\}$ is a two-sheeted covering map.
+\end{proof}
+\end{problem}
+
+\begin{problem}[11-4]
+Show that there is a two-sheeted covering of the Klein bottle by the torus.
+\begin{proof}
+Let $T^2 = S^1 \times S^1$ denote the torus, and let $K$ denote the Klein bottle. Let $q_1: \mathbb{R}^2 \to T^2$ 
+be a map satisfying $T^2 = \mathbb{R}^2 / (2\mathbb{Z}\times \mathbb{Z})$, and let $q_2: \mathbb{R}^2 \to K$ be a 
+map satisfying $K = \mathbb{R}^2 / \varGamma $, where $\varGamma$ is the group generated by the transformations 
+$g_1:(x,y) \mapsto (x+1,-y)$ and $g_2:(x,y) \mapsto (x,y+1)$. Notice that $g_1^2:(x,y) \mapsto (x+2,y)$, 
+so the subgroup $2\mathbb{Z}\times \mathbb{Z}$ generated by $g_1^2$ and $g_2$ is a normal subgroup of $\varGamma$. 
+
+
+Suppose $q: T^2 \to K$ is the map, since preceding text, we can also define $q$ by group action
+$q:\mathbb{R}^2 / (2\mathbb{Z}\times \mathbb{Z}) \to \mathbb{R}^2 / \varGamma $. Now to prove $q$ is a covering map,
+we need to show that $q$ is well-defined, continuous, surjective, and for every point $k \in K$, there exists an 
+open neighborhood $U$ of $k$ such that $q^{-1}(U)$ is a disjoint union of open sets in $T^2$, each mapped 
+homeomorphically onto $U$ by $q$.
+
+\begin{itemize}
+    \item[$1^\circ$] \textbf{Well-definedness:} First, we prove $[z_0]_{\Gamma'} = [z_1]_{\Gamma'} \Leftrightarrow  z_1 = \gamma'(z_0)$
+    As $z\sim z' \iff \exists \gamma' \in \Gamma' \text{ s.t. } z' = \gamma'(z)$ is an equivalence relation, 
+    equivalence class of this is 
+    $$[z_0]_{\Gamma'}:=\{\gamma'(z_0) : \gamma' \in \Gamma'\} = \Gamma'\cdot z_0$$
+    where 
+    $$\Gamma'=\{\gamma _{1}^{m}\gamma _{2}^{n}:m,n\in \mathbb{Z}\}=\{z\mapsto z+mv_1+nv_2: m,n\in \mathbb{Z}\}.$$ 
+    $\Gamma'$ is a group, so it has inverse element $\gamma ^{'-1} \in \Gamma'$ such that $\gamma ^{'-1}\gamma' = id$. 
+    We must show $\Gamma' \cdot z_0 = \Gamma' \cdot z_1$.
+
+    \begin{enumerate}
+        \item \textbf{$[z_1]_{\Gamma'} \subseteq [z_0]_{\Gamma'}$:} Take arbitrary element of $[z_1]_{\Gamma'}$, which is $\delta(z_1)$ for some $\delta \in \Gamma'$. Substituting $z_1 = \gamma'(z_0)$:
+        $$\delta(z_1) = \delta(\gamma'(z_0)) = (\delta \gamma')(z_0)$$
+        Since $\Gamma'$ is a group, $\delta \gamma' \in \Gamma'$, hence
+        $$\delta(z_1) \in \Gamma' \cdot z_0 = [z_0]_{\Gamma'}$$
+        \item \textbf{$[z_0]_{\Gamma'} \subseteq [z_1]_{\Gamma'}$:} Since $\Gamma'$ is a group, $\gamma'$ has an inverse $(\gamma')^{-1} \in \Gamma'$, and
+        $$z_0 = (\gamma')^{-1}(z_1)$$
+        (applying $(\gamma')^{-1}$ to both sides of $z_1 = \gamma'(z_0)$). This shows that $z_0$ can also be obtained from $z_1$ via an element of $\Gamma'$, so the same argument (with the roles of $z_0, z_1$ swapped) gives
+        $$[z_0]_{\Gamma'} \subseteq [z_1]_{\Gamma'}$$
+    \end{enumerate}
+    So we have
+    $$z_1 = \gamma'(z_0) \implies [z_0]_{\Gamma'} = [z_1]_{\Gamma'}.$$
+    Conversely, if $[z_0]_{\Gamma'} = [z_1]_{\Gamma'}$. Since $z_1 \in [z_1]_{\Gamma'}$ (every point lies in its own orbit, taking $\delta = e$, the identity: 
+    $e(z_1) = z_1$), and by hypothesis $[z_1]_{\Gamma'} = [z_0]_{\Gamma'}$, we get
+    $$z_1 \in [z_0]_{\Gamma'}.$$
+    By the definition of $[z_0]_{\Gamma'}$ above, $z_1 \in [z_0]_{\Gamma'}$ means there exists some $\gamma' \in \Gamma'$ such that
+    $$z_1 = \gamma'(z_0),$$
+    which is exactly the desired conclusion.Then we have
+    $$[z_0]_{\Gamma'} = [z_1]_{\Gamma'} \implies z_1 = \gamma'(z_0).$$ 
+    Since $\Gamma'=(2\mathbb{Z}\times \mathbb{Z})\subset \Gamma $, let 
+    $z_0, z_1 \in \mathbb{R}^2$ are arbitrary satisfying $[z_0]_{\Gamma'} = [z_1]_{\Gamma'}$, where exists 
+    $\gamma' \in \Gamma'\subset \Gamma $ such that $z_1 = \gamma'(z_0)$ which implies $[z_0]_{\Gamma} = [z_1]_{\Gamma}$.
+    So $q([z_0]_{\Gamma'}) = q([z_1]_{\Gamma'})$, which $q$ is well-defined.
+
+    \item[$2^\circ$] \textbf{Continuity:} Suppose $V \subset K $ is open. Then we need to prove that 
+    $q^{-1}(V)$ is open in $T^2$. For every $z\in \mathbb{R}^2$,
+    $$ q(q_1(z)) = q([z]_{\Gamma'}) = [z]_{\Gamma} = q_2(z), $$
+    so we obtain the following commutative diagram: 
+    $$ q\circ q_1 = q_2.$$
+    Since $q_2$ is continuous, for any open set $V \subset K$, the preimage $q_2^{-1}(V)$ is open in 
+    $\mathbb{R}^2$. We have
+    $$q_1^{-1}(q^{-1}(V)) = q_2^{-1}(V),$$
+    since $q_1$ is a quotient map, $q^{-1}(V)\subset T^2$ is open if and only if $q_1^{-1}(q^{-1}(V))$ is open. 
+    So $q^{-1}(V)$ is open in $T^2$. Hence, $q$ is continuous.
+
+    \item[$3^\circ$] \textbf{Surjectivity:} Since $q_2$ is surjective, for any $[z]_{\Gamma} \in K$, there exists 
+    $z \in \mathbb{R}^2$ representing this class(a fixed/based point). Then we can take $[z]_{\Gamma'} \in T^2$, 
+    which satisfies $q([z]_{\Gamma'}) = [z]_{\Gamma}$. So $q$ is surjective.
+
+    \item [$4^\circ$] \textbf{Evenly Covered Neighborhoods:} Since $ q\circ q_1 = q_2$ and they are both surjective, 
+    for any $[z]_{\Gamma} \in K$, we can get $z \in \mathbb{R}^2$ representing this class and $[z]_{\Gamma'} \in T^2$.
+    Since $q_2$ is a covering map, there exists an open neighborhood $U \subset K$ of $[z]_{\Gamma}$ such that 
+    $q_2^{-1}(U)$ is a disjoint union of open sets in $\mathbb{R}^2$, each mapped homeomorphically onto $U$ by $q_2$ 
+    and the cardinality of any fiber is called the number of sheets of the covering which means that  
+    $$q_2^{-1}(U) = \bigsqcup_{\gamma \in \Gamma} \gamma(V) = (\bigsqcup_{\gamma \in \Gamma'} \gamma(V))\sqcup  (\bigsqcup_{\gamma \in {g_1\Gamma'}} \gamma(V))\triangleq W_1\sqcup W_2.$$ 
+    For $z\in \mathbb{R}^2$, there exists a unique open set $V \subset q_2^{-1}(U)$ 
+    containing $z$ such that $q_2|_{V}: V \to U$ is a homeomorphism. Let $W = q_1(V) \subset T^2$, which is open in $T^2$. 
+    Since $q_1$ is a quotient map and $[z]_{\Gamma'} \in W$, similarly, there exists an open neighborhood, without 
+    loss of generality assume it is $W$, such that $q_1^{-1}(W)$ is a disjoint union of open sets in $\mathbb{R}^2$, 
+    each mapped homeomorphically onto $W$ by $q_1$ and 
+    $$q_1^{-1}(W)= \bigsqcup_{\gamma \in \Gamma'} \gamma(V) = W_1.$$ 
+    Obviously, $q_1^{-1}(q^{-1}(U)) = q_2^{-1}(U) = W_1\sqcup W_2$. Let $U_1 = q_1(W_1) = W$ and $U_2 = q_1(W_2) = q_1(g_1(V))$.
+    Now we prove that $U_1\cap U_2 = \emptyset$. Let $w$ is arbitrary element of $U_1\cap U_2$, then there exists 
+    $w_1 \in W_1$ and $w_2 \in W_2$ such that $q_1(w_1) = w = q_1(w_2)$. Since $q_1$ is a quotient map, there exists 
+    $\gamma' \in \Gamma'$ such that $w_2 = \gamma'(w_1)$. But $W_1$ and $W_2$ are disjoint, so this is impossible. 
+    Hence, $U_1\cap U_2 = \emptyset$. Next to prove that $q|_{U_i}: U_i \to U$ is a homeomorphism for $i=1,2$. 
+    Since $q\circ q_1 = q_2$ and $q_1|_{W_1}: W_1 \to U_1$ is a homeomorphism, $q_2|_{W_1}: W_1 \to U$ 
+    is a homeomorphism too. So $q|_{U_1} = q_2 \circ (q_1|_{W_1})^{-1}$ is a homeomorphism. Similarly, 
+    $q|_{U_2} = q_2 \circ (q_1|_{W_2})^{-1}$ is a homeomorphism.
+    
+
+\end{itemize}
+\end{proof}
+\end{problem}
+
+\begin{problem}[11-10]
+Show that a covering map is proper if and only if it is finite-sheeted.
+\begin{proof}
+A map which is proper satisfies that the preimage of every compact set is compact. Suppose $q: E \to X$ is a covering
+map.
+\begin{itemize}
+    \item[$1^\circ$] \textbf{Necessity:} If $q$ is proper, then for any $x \in X$, the singleton $\{x\}$ is compact, 
+    so its preimage $q^{-1}(x)$ is compact in $E$. Since $x$ is evenly covered, there exists an open neighborhood 
+    $U$ of $x$ such that $q^{-1}(U) = \bigsqcup_{\alpha \in A} V_\alpha$, where each $V_\alpha$ is open in $E$ and 
+    contains unique point $x_\alpha \in q^{-1}(x)$. By the definition of the subspace topology on $q^{-1}(x)$, 
+    the intersection
+    $$\{x_\alpha\} = V_\alpha \cap q^{-1}(x)$$
+    is open in $q^{-1}(x)$ for each $\alpha \in A$. This implies that $q^{-1}(x)$ is a discrete space. Since 
+    $\mathcal{U} = \{\{x_\alpha\} : \alpha \in A\}$ forms an open cover of the compact space $q^{-1}(x)$, it must 
+    admit a finite subcover. Thus, the index set $A$ is finite, meaning that $q$ is finite-sheeted.
+
+    \item[$2^\circ$] \textbf{Sufficiency:} If $q$ is finite-sheeted, then for any compact set $K \subset X$, let 
+    $\{\mathcal{W} _i\}$ be an arbitrary open cover of $q^{-1}(K)$. For $x\in K$ is arbitrary, then exists neighborhood $U_x$ of $x$ such that 
+    $q^{-1}(U_x) = \bigsqcup_{i = 1}^{n_x} G_{i}^{x}$, where $n_x$ is a finite index set , each $G_{i}^{x}$ is 
+    is homeomorphic to $U_x$ via the restriction of $q$ and each $G_{i}^{x}\cap q^{-1}(x)$ is a singleton 
+    $e_i\in \mathcal{W} _{j(i)} $. So let $\phi _i = (q|_{G_{i}^{x}})^{-1}:U_x \to G_{i}^{x}$ is homeomorphism, we
+    define $U_x^i = \phi _i^{-1}(\mathcal{W} _{j(i)}\cap G_{i}^{x})\subset U_x$ is open in $U_x$ and $x\in U_x^i$ 
+    since $\phi _i(x)=e_i\in \mathcal{W} _{j(i)}$. Let $U_x' := \bigcap_{i=1}^{n_x} U_x^i$ is open in $U_x$ and 
+    $x\in U_x'$ such that each $q^{-1}(U_x')\cap G_{i}^{x}\subset \mathcal{W} _{j(i)}$. So $q^{-1}(U_x')$ is covered 
+    by finite number of open sets $\mathcal{W} _{j(i)}$ for $i=1,2,\ldots,n_x$ and $\{U_x':x\in K\}$ is an open 
+    cover of $K$. Since $K$ is compact, there exists a finite subcover $\{U_{x_1}', U_{x_2}', \ldots, U_{x_m}'\}$ 
+    of $K$, which means $q^{-1}(K) \subseteq \bigcup_{s=1}^m q^{-1}(U_{x_s}')$.Since each 
+    $q^{-1}(U_{x_s}') = \bigsqcup_{i=1}^{n_{x_s}} (q^{-1}(U_{x_s}') \cap G^{x_s}_i) \subseteq \bigcup_{i=1}^{n_{x_s}} \mathcal{W}_{j_s(i)}$, 
+    we have:
+    $$q^{-1}(K) \subseteq \bigcup_{s=1}^m \bigcup_{i=1}^{n_{x_s}} \mathcal{W}_{j_s(i)}.$$
+    Since this union consists of only finitely many sets (specifically, $\sum_{s=1}^m n_{x_s}$ sets), we have 
+    found a finite subcover of $\{\mathcal{W}_i\}$ for $q^{-1}(K)$. Hence, $q^{-1}(K)$ is compact, and $q$ is 
+    proper.
+    
+    
+    % each $G_{\alpha_x}$ 
+    % is homeomorphic to $U_x$ via the restriction of $q$. Since $K$ is compact, there exists a finite subcover 
+    % $\{U_{x_1}, U_{x_2}, \ldots, U_{x_m}\}$ of $K$.
+
+    % $\{G_{\alpha_{x_i}}:\alpha_{x_i} \in I_{x_i}, i = 1, 2, \ldots, m\}$ is a finite open cover of $q^{-1}(K)$, 
+    % for each $\alpha_{x_1} \in I_{x_1}$, exists a sheet of preimage of $U_{x_i}$, without loss of 
+    % generality assume it is $U_{x_2}$, such that $G_{\alpha_{x_1}}\cap G_{\alpha_{x_1}}\neq \emptyset $. So, we can 
+    % select $m$ open sets of $\{G_{\alpha_{x_i}}:\alpha_{x_i} \in I_{x_i}, i = 1, 2, \ldots, m\}$ 
+    % which is homeomorphic to $U_{x_i}$ via the restriction of $q$ and cover $q^{-1}(K)$ definited $X_k$. Since all fibers of a covering map have the same 
+    % cardinality, so $I_{x_i}$ has the same cardinality for all $i = 1, 2, \ldots, m$ which defines n. Therefore, 
+    % for each $X_k$ is homeomorphic to $q|_{X_k}(X_k)$ via the restriction of $q$ containing $K$. So since $K$ is compact 
+    % and homeomorphisms preserve compactness, $q^{-1}(K) = \sqcup_{k=1}^n X_k$ is compact. Hence, 
+    % $q$ is proper.
+
+
+    % preimage $q^{-1}(K) = \bigsqcup_{\alpha \in I} G_\alpha$ is a finite union and each $G_\alpha$ is homeomorphic 
+    % to $K$ via the restriction of $q$. Since $K$ is compact and homeomorphisms preserve compactness, 
+    % each $G_\alpha$ is compact. Therefore, $q^{-1}(K)$ is a finite union of compact sets, which is also compact. 
+    % Hence, $q$ is proper.
+
+
+\end{itemize}
+\end{proof}
+\end{problem}
+
+\begin{problem}[11-11]
+    Let $q: E \to X$ be a covering map. Show that $E$ is compact if and only if $X$ is compact and $q$ is a 
+    finite-sheeted covering.
+    \begin{proof}
+        \item[$1^ \circ$] \textbf{Sufficiency:} If $X$ is compact and $q$ is finite-sheeted, since problem 11-10, $q$ is 
+        proper map. The preimage of compact set is compact, so $E = q^{-1}(X)$ is compact.
+        \item[$2^ \circ$] \textbf{Necessity:} Since $E$ is compact and the covering map $q$ is continuous, $X = q(E)$ is compact 
+        as the continuous image of a compact space is compact. 
+        
+        Let $x \in X$ be arbitrary. Then there exists an evenly covered open neighborhood $U_x$ of $x$ such that 
+        $q^{-1}(U_x) = \bigsqcup_{\alpha \in A} V_\alpha $, where each $V_\alpha $ is open in $E$ and contains a 
+        unique point $x_\alpha \in q^{-1}(x)$, which means that $x_\alpha$ is not in any other 
+        $V_\beta$ for $\beta \neq \alpha$. So $q^{-1}(x)$ is a discrete subset of $E$. 
+
+        Now we prove that a closed discrete subset of a compact space is finite. Since $\{x\}$ is closed in $X$ and $q$ is
+        continuous, $q^{-1}(x)$ is closed in $E$. Since $E$ is compact, the subset $q^{-1}(x)$ is compact (every closed 
+        subset of a compact space is compact). Since $q^{-1}(x)$ is discrete, for each $x_\alpha \in q^{-1}(x)$, there 
+        exists an open set $V'_\alpha$ in $q^{-1}(x)$ containing only $x_\alpha$, so that $\{V'_\alpha\}_{\alpha \in A}$ 
+        forms an open cover of $q^{-1}(x)$. Since $q^{-1}(x)$ is compact, there exists a finite subcover 
+        $\{V'_{\alpha_1}, V'_{\alpha_2}, \ldots, V'_{\alpha_n}\}$ of $q^{-1}(x)$. As there is only one point in each 
+        $V'_{\alpha_i}$, we can infer that $q^{-1}(x)$ is finite. Hence, $q$ is finite-sheeted.
+        
+        
+        % Also, $q|_{V'_\beta}: V'_\beta \to U'_x$ is a homeomorphism for each 
+        % $\beta \in B$. 
+
+
+
+
+        % $x \in X$ be arbitrary, then there exists an open neighborhood $U_x$ of $x$ such that 
+        % $q^{-1}(U_x) = \bigsqcup_{\alpha \in A} V_\alpha $, where each $V_\alpha $ is open in $E$ and contains unique 
+        % point $x_\beta  \in q^{-1}(x)$. Also, $q|_{V_\beta}: V_\beta \to U_x$ is a homeomorphism for each 
+        % $\alpha \in A$. Since $q$ is surjective, wo can infer $\{V_\beta: \beta \in B\}\cup (E \setminus q^{-1}(x))$ is a open covering 
+        % of $E$ since $q^{-1}(x)$ is closed in $E$ such that . Since $E$ is compact, there exists a finite subcover 
+        % $\{V^{x_i}_{\beta_j}: \beta_j \in B, i = 1, 2, \ldots, m, j = 1, 2, \ldots, n\}$ of $E$.
+        
+        
+        % Then $\{U_{x_i}: i = 1, 2, \ldots, m\}$ is a finite subcover of $X$, which implies that $X$ is compact. 
+
+        % Since it exists $U_{\alpha_x} \in \{U_\alpha\}$, we define 
+        % $U_{x} = U_{\alpha_x} \cap U'_x$ for each 
+        % $\alpha \in A$ such that $q(V'_\alpha) \subset  U_{\alpha}$. 
+        % Then $\{V'_\alpha\}_{\alpha \in A}$ is a locally finite open cover of $q^{-1}(U'_x)$.
+ 
+
+    \end{proof}
+\end{problem}
+
+\begin{problem}[11-5]
+Let $M$ and $N$ be connected manifolds of dimension $n$, and suppose $q: \widetilde{M} \to M$ is a $k$-sheeted covering 
+map. Show that there is a connected sum $M \# N$ that admits a $k$-sheeted covering by a manifold of the form 
+$\widetilde{M} \# N \# \cdots \# N$ (connected sum of $\widetilde{M}$ with $k$ disjoint copies of $N$). [Hint: choose 
+the ball to be cut out of $M$ to lie inside an evenly covered neighborhood.]
+
+    \begin{proof}
+    
+
+
+    \end{proof}
+\end{problem}
+
+
+\end{document}
