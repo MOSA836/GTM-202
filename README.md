@@ -11,9 +11,9 @@ This repository serves as a personal archive of my self-study journey in topolog
 
 ### Topological Properties under Covering Maps
 - **Problem 11-1**: Topological properties inheritance under covering maps $q: E \to X$:
-  - (a) If $X$ is Hausdorff, then $E$ is Hausdorff.
-  - (b) If $X$ is an $n$-manifold, then $E$ is an $n$-manifold.
-  - (c) If $E$ is an $n$-manifold and $X$ is Hausdorff, then $X$ is an $n$-manifold.
+  - **(a)** If $X$ is Hausdorff, then $E$ is Hausdorff.
+  - **(b)** If $X$ is an $n$-manifold, then $E$ is an $n$-manifold.
+  - **(c)** If $E$ is an $n$-manifold and $X$ is Hausdorff, then $X$ is an $n$-manifold.
 
 ### Concrete Covering Space Examples
 - **Problem 11-2**: A rigorous proof that the natural projection $q: S^n \to \mathbb{R}P^n$ is a two-sheeted covering map for any $n \ge 1$.
