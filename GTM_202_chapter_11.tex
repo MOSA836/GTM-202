@@ -491,10 +491,158 @@ Let $M$ and $N$ be connected manifolds of dimension $n$, and suppose $q: \wideti
 map. Show that there is a connected sum $M \# N$ that admits a $k$-sheeted covering by a manifold of the form 
 $\widetilde{M} \# N \# \cdots \# N$ (connected sum of $\widetilde{M}$ with $k$ disjoint copies of $N$). [Hint: choose 
 the ball to be cut out of $M$ to lie inside an evenly covered neighborhood.]
+    \begin{lemma}[Coordinate neighborhoods form a basis for the topology]
+    The coordinate neighborhoods of a manifold $M$ form a basis for its topology.
+
+    Suppose $U$ is arbitrary open subset of $M$, now we prove for any $x \in U$, there exists a coordinate neighborhood 
+    $B$ satisfying $x \in B \subset U$.
+    By the definition of manifold, there exists a coordinate chart $(U_x,\varphi )$ of $x$, where 
+    $\varphi : U_x \rightarrow \varphi(U_x)\subset \mathbb{R}^n$ is homeomorphism and $\varphi(U_x)$ is open set in 
+    $\mathbb{R}^n$. Since $U_x$ and $U$ are both open set, $V = U \cap U_x$ is open in $M$ which containing $x$. In 
+    this chart, we choose standard closed $n$-disk 
+    $\mathbb{D}^n(\varphi(x), \varepsilon) = \{y \in \mathbb{R}^n| \Vert y - \varphi(x) \Vert \leq \varepsilon\}$ in $\mathbb{R}^n$, 
+    where $ \varphi(x) \in \mathbb{R}^n$ and $\mathbb{D}^n \subset \varphi(V)$. We define the closed disk $D_M \subset M$ 
+    as the preimage of this closed ball under the coordinate map:
+    $$D_M := \varphi^{-1}(\mathbb{D}^n(\varphi(x), \varepsilon))$$
+    By construction, $D_M$ is closed subspace of $M$ homeomophic to standard closed disk $\mathbb{D}^n(\varphi(x), \varepsilon)$. 
+    So its topological boundary $\partial D_M$ is homeomorphic to standard sphere $\mathbb{S}^{n-1}$, and its topological 
+    interior $\text{Int}(D_M)$ is homeomophic to the standard open $n$-ball $\mathbb{B}^n(\varphi(x), \varepsilon)$. So we define 
+    $$ B_M := \varphi^{-1}(\mathbb{B}^n(\varphi(x), \varepsilon)).$$
+    As the homeomorphic between $B_M$(where this is $\text{Int}(D_M)$) and $\mathbb{B}^n(\varphi(x), \varepsilon)$, 
+    obviously, $B_M$ is open in $M$, where $B_M$ is a neighborhood of $x$. Since 
+    $\mathbb{B}^n(\varphi(x), \varepsilon) \subset \varphi(V)$, there are $B_M \subset V = U \cap U_x \subset U$ and 
+    $x \in B_M$ which means that $B_M$ is coordinate domain containing $x$. So $B_M$ is coordinate neighborhood of $x$, 
+    coordinate neighborhoods form a basis for its topology.
+    \end{lemma}
 
     \begin{proof}
+    Let $x$ is arbitrary point of $M$, since $q: \widetilde{M} \to M$ is a $k$-sheeted covering map, there exists an 
+    evenly covered open neighborhood $U$ of $x$ such that $q^{-1}(U) = \bigsqcup_{i=1}^k \widetilde{U}_i$, where each 
+    $\widetilde{U}_i$ is open in $\widetilde{M}$ and $q|_{\widetilde{U}_i}: \widetilde{U}_i \to U$ is a homeomorphism.
+    Also, each $\widetilde{U_i}$ is open in $\widetilde{M}$ and contains a unique point $x_\alpha \in q^{-1}(x)$. 
     
+    \item[$1^ \circ$] \textbf{Definition of coordinate neighborhood:} Since Lemma 1 said that coordinate neighborhoods 
+    form a basis for the topology and $M$ is connected manifold of dimension $n$, then for each point $x \in M$, there 
+    exists a local coordinate chart $(U_x, \varphi)$ around $x$, where $U_x \subset U$ is open neighborhood of $x$ and 
+    $\varphi:U_x \rightarrow \mathbb{R} ^n$ is homeomorphism. 
+    Let 
+    $$\mathbb{D}^n(p, \varepsilon) = \{ y \in \mathbb{R}^n \mid \Vert y - p\Vert \leq \varepsilon \}$$
+    denote the standard closed $n$-ball of radius $\varepsilon > 0$ centered at $p = \varphi(x) \in \mathbb{R}^n$. By 
+    choosing $\varepsilon$ sufficiently small, we ensure that $\mathbb{D}^n(p, \varepsilon) \subset \varphi(U_x)$. We define 
+    the closed disk $D_M \subset U \subset M$ as the preimage of this closed ball under the coordinate map:
+    $$D_M := \varphi^{-1}( \mathbb{D}^n(p, \varepsilon) ).$$
+    By construction, $D_M$ is a closed subspace of $M$ homeomorphic to the standard closed $n$-disk $\mathbb{D}^n$. 
+    Its topological boundary 
+    $$\partial D_M = \varphi^{-1}(\partial _{\varphi (U_i)}\mathbb{D} ^n(p,\varepsilon)) = \varphi^{-1}(\partial _{\mathbb{R} ^n}\mathbb{D} ^n(p,\varepsilon))$$
+    where $\partial_{\mathbb{R}^n} \mathbb{D}^n(p, \varepsilon) = \{ y \in \mathbb{R}^n \mid \Vert y - p\Vert = \varepsilon \} \cong \mathbb{S}^{n-1}$.
+    Obviously, $\partial D_M$ is homeomorphic to the standard sphere $\mathbb{S}^{n-1}$, and its 
+    topological interior $\text{Int}(D_M) \subset U$ is homeomorphic to the standard open $n$-ball $\mathbb{B}^n$. 
+    Similarly, choose a closed disk $D_N \subset N$ such that it satisfies $ \partial D_N \cong \mathbb{S}^{n-1}$ and 
+    $\text{Int}(D_N) \cong \mathbb{B}^n$. 
 
+    \item[$2^ \circ$] \textbf{Boundary homeomorphism:} We define the punctured manifolds with boundaries by removing the topological interiors of the disk:
+    $$ M' = M \setminus \text{Int}(D_M) \quad \text{and} \quad N' = N \setminus \text{Int}(D_N)$$
+    Since $ \partial M' = \text{Cl}(M) \setminus \text{Int}(D_M)$ and $\text{Int}(D_M)$ is open, the $\text{Int}(D_M)$'s complement $M'$ 
+    is closed. So the closure of $M'$ is itself which means that $ \text{Cl}(M') = M' = M \setminus \text{Int}(D_M)$. 
+    By topological complement laws, the interior of a complement is the complement of the closure. Since $D_M$ is closed 
+    disk, $\text{Cl}(\text{Int}(D_M)) = D_M$. Thus: 
+    $$\text{Int}(M') = \text{Int}(M \setminus \text{Int}(D_M)) = M \setminus \text{Cl}(\text{Int}(D_M)) = M \setminus D_M$$
+    Combining these two results yields the boundary of $M'$:
+    $$ \partial M' = \text{Cl}(M') \setminus \text{Int}(M') = (M \setminus \text{Int}(D_M)) \setminus (M \setminus D_M) = D_M \setminus \text{Int}(D_M) = \partial D_M.$$
+    Since $ \partial D_M \cong \mathbb{S}^{n-1}$ via the coordinate chart, we have $ \partial M' \cong \mathbb{S}^{n-1}$. 
+    Similarly, we have $ \partial N' \cong \mathbb{S}^{n-1}$.(which can infer $\partial M = 0$)
+
+    Fix a boundary homeomorphism $h: \partial M' \to \partial N'$. The connected sum $M \# N$ is defined as the topological 
+    adjuction space: 
+    $$M \# N := M' \cup_h N' = (M' \sqcup N') / \sim_h$$
+    where the equivalence relation is generated by $y \sim_h h(y)$ for all $y \in \partial M'$.
+    ($M \# N$ is defined as a quotient space via the adjunction map, where the equivalence classes partition the 
+    disjoint union by identifying each point $y \in \partial M'$ with its image $h(y) \in \partial N'$ under the 
+    boundary homeomorphism $h$.)
+
+    \item[$3^ \circ$] \textbf{Definition of the covering space $\widetilde{M} \# N \# \dots \# N$:} Since the closed 
+    disk $D_M$ is contained entirely within the evenly covered neighborhood $U$, its preimage $q^{-1}(D_M)$ 
+    decomposes into a disjoint union of exactly $k$ closed disks:
+    $$q^{-1}(D_M) = \widetilde{D}_1 \sqcup \widetilde{D}_2 \dots \sqcup \widetilde{D}_k, $$
+    where for each $i = 1, \dots, k$, the restriction $q|_{\widetilde{D}_i}: \widetilde{D}_i \to D_M$ is a 
+    homeomorphism.
+    We define the punctured covering space by removing the interiors of these $k$ disjoint disks: 
+    $$\widetilde{M}' = \widetilde{M}\setminus \bigcup ^k_{i = 1} \text{Int}(\widetilde{D}_i).$$
+    The boundary consists of $k$ disjoint components 
+    $\partial \widetilde{M}' = \partial \widetilde{D}_1 \sqcup \dots \sqcup \partial \widetilde{D}_k$.
+    Now, let $N'_1, \dots, N'_K$ be $k$ disjoint topological copies of $N'$. For each copy, fix a canonical 
+    homeomorphism $\phi_i: N'_i \to N'$. To glue each copy to its corresponding boundary component on $\widetilde{M}'$, 
+    we define $k$ boundary homeomorphisms $g_i: \partial \widetilde{D}_i \to \partial N'_i$ induced by the base 
+    gluing map $h$ and the covering map $q$: 
+    $$g_i := (\phi_i\vert{}_{\partial N'_i})^{-1} \circ h \circ (q\vert{}_{\partial \widetilde{D}_i})$$
+    Finally, we construct the manifold obtained by simultaneously gluing $\widetilde{M}'$ to $N'_1, \dots, N'_k$ 
+    along the maps $g_1,\dots,g_k$; we denote this manifold by $\widetilde{W}$. Explicitly, $\widetilde{W}$ 
+    is defined as the adjunction space
+    $$\widetilde{W} := \left( \widetilde{M}' \sqcup N'_1 \sqcup \dots \sqcup N'_k \right) \big/ \{z \sim g_i(z) : z \in \partial \widetilde{D}_i,\ i = 1,\dots,k\},$$
+    % $$\widetilde{W} := \widetilde{M}' \cup_{\{g_i\}} \left( \bigsqcup_{i=1}^k N'_i \right) = \left( \widetilde{M}' \sqcup N'_1 \sqcup \dots \sqcup N'_k \right) / \sim_g $$
+    % where the equivalence relation is generated by $z \sim_g g_i(z)$ for each $i = 1, \dots, k$ and all 
+    % $z \in \partial \widetilde{D}_i$.
+    and we write
+    $\pi : \widetilde{W} \rightarrow M \# N = (M' \sqcup N') / \sim_h$ be the associated map from 
+    $\widetilde{W} \cong \widetilde{M} \# N \# \dots \# N$ to $M \# N$.
+
+    \item[$4^ \circ$] \textbf{$\pi$ is covering map:} 
+    % Since $\pi$ is quotient map, obviously $\pi$ is continuous and surjective. Now we prove for arbitrary 
+    To prove $\pi$ is covering map, we need to prove $\pi$ is continuous and surjective, and each point $p \in X$ has 
+    a neighborhood $U$ that is evenly covered by $\pi$. 
+    \begin{enumerate}
+        % \item \textbf{Well-definedness and continuity:} We define the natural map $\widetilde{\pi}$ from 
+        % $\widetilde{M}' \sqcup N'_1 \sqcup \dots \sqcup N'_k$ to $M' \sqcup N'$, which is defined as 
+        % $$\widetilde{\pi}|_{\widetilde{M}'} = q|_{\widetilde{M}'} \quad \text{and} \quad \widetilde{\pi}|_{N'_i} = \phi _i \quad \text{for each } i = 1, \dots, k.$$
+        % Let $\pi_{\text{base}} : M' \sqcup N' \to M \# N$ be the canonical quotient map. To show that the composite 
+        % map $\pi_{\text{base}} \circ \widetilde{\pi}$ induces a well-defined map $p : \widetilde{W} \to M \# N$ on 
+        % the quotient space, we check the boundary identifications: for any $z \in \partial \widetilde{D}_i$,
+        % $$\pi_{\text{base}} \left( \widetilde{\pi}(g_i(z)) \right) = \pi_{\text{base}} \left( \phi_i(g_i(z)) \right) = \pi_{\text{base}} \left( h(q(z)) \right) = \pi_{\text{base}} \left( q(z) \right) = \pi_{\text{base}} \left( \widetilde{\pi}(z) \right)$$
+        % By the universal property of the quotient topology, $\pi_{\text{base}} \circ \widetilde{\pi}$ uniquely 
+        % induces a continuous map $\pi : \widetilde{W} \to M \# N$.
+        \item \textbf{Well-definedness and continuity:} We define the natural map 
+        $\widetilde{\pi}$ from $\widetilde{M}' \sqcup N'_1 \sqcup \dots \sqcup N'_k$ to $M' \sqcup N'$, which is 
+        defined as 
+        $$\widetilde{\pi}|_{\widetilde{M}'} = q|_{\widetilde{M}'} \quad \text{and} \quad \widetilde{\pi}|_{N'_i} = \phi_i \quad \text{for each } i = 1, \dots, k.$$
+        Let $\pi_{\text{base}} : M' \sqcup N' \to M \# N$ be the canonical quotient map. To show that the composite 
+        map $\pi_{\text{base}} \circ \widetilde{\pi}$ induces a well-defined map $\pi : \widetilde{W} \to M \# N$ on 
+        the quotient space, we check the boundary identifications: for any $z \in \partial \widetilde{D}_i$,
+        $$\pi_{\text{base}} \left( \widetilde{\pi}(g_i(z)) \right) = \pi_{\text{base}} \left( \phi_i(g_i(z)) \right) = \pi_{\text{base}} \left( h(q(z)) \right) = \pi_{\text{base}} \left( q(z) \right) = \pi_{\text{base}} \left( \widetilde{\pi}(z) \right)$$
+        Then we have commutative diagram: 
+        $$\begin{array}{ccc} \widetilde{M}' \sqcup N'_1 \sqcup \dots \sqcup N'_k & \xrightarrow{\quad \pi_{\text{base}} \circ \widetilde{\pi} \quad} & M \# N \\ \Big\downarrow {\scriptstyle q_{cov}} & \nearrow_{\pi} & \\ \widetilde{W} = (\widetilde{M}' \sqcup N'_1 \sqcup \dots \sqcup N'_k) / \sim_g & & \end{array}$$
+        By the characteristic property of the quotient topology(Thm.3.70), $\pi_{\text{base}} \circ \widetilde{\pi}$ induces 
+        a well-defined and continuous map $\pi : \widetilde{W} \to M \# N$.
+        
+        \item \textbf{Surjectivity:} Since the restriction $q|_{\widetilde{M}'} : \widetilde{M}' \to M'$ and maps 
+        $\phi_i : N'_i \to N'$ are surjective, the composite map $\pi_{\text{base}} \circ \widetilde{\pi}$ is surjective, 
+        which directly implies that $\pi : \widetilde{W} \to M \# N$ is surjective.
+
+        \item \textbf{Evenly covered by $\pi$:} By the definition at the beginning, a neighborhood $U$ of $x$ is 
+        evenly covered by $q$. Let $p$ is arbitrary point of $M \# N$. If $p \in \text{Int}(M')$, then there exists an 
+        evenly covered neighborhood $U$ of $p$ in $M$ such that $\pi^{-1}(U_p) = q|_{U}^{-1}(U_p) = \bigsqcup_{i=1}^k \widetilde{U}_i$, 
+        where $U_p = U \cap \text{Int}(M')$ is open in $M'$ and neighborhood $U_p$ is a evenly covered by $q$. If 
+        $p \in \text{Int}(N')$, then since $\phi_i$ is homeomorphism, there exists an evenly covered neighborhood 
+        $U \subset \text{Int}(N')$ of $p$ in $N'$ such that $\pi^{-1}(U) = \bigsqcup_{i=1}^k \phi_i^{-1}(U)$, where 
+        each $\phi_i^{-1}(U)$ is open in $N'_i$ and $\pi|_{\phi_i^{-1}(U)}: \phi_i^{-1}(U) \to U$ is a homeomorphism. 
+        If $p \in \partial M' \sim_h \partial N'$, let $p_M \in \partial M'$ and $p_N = h(p_M) \in \partial N'$ be the 
+        representatives of $p$ in $M' \sqcup N'$. Since $q$ is covering map, 
+        $q^{-1}(p_M) = \{\widetilde{p}_1, \dots, \widetilde{p}_k\} \subset \widetilde{M}'$, where each 
+        $\widetilde{p}_i \in \partial \widetilde{D}_i$. Choose an evenly covered neighborhood $V \subset M$ of $p_M$ 
+        under $q$, such that $q^{-1}(V) = \bigsqcup_{i=1}^k \widetilde{V}_i$, where each $\widetilde{V}_i$ is open in 
+        $\widetilde{M}'$ and every restriction $q|_{\widetilde{V}_i}: \widetilde{V}_i \to V$ is a homeomorphism. Let 
+        $V_M = V \cap M'$. Since $h: \partial M' \to \partial N'$ is a homeomorphism, $h(V_M \cap \partial M')$ is an 
+        open neighborhood of $p_N$ in $\partial N'$. Choose an open neighborhood $U_N \subset N'$ of $p_N$ such that 
+        $U_N \cap \partial N' = h(V_M \cap \partial M')$. Define $U := \pi_{\text{base}}(U_M \sqcup U_N) \subset M \# N$. 
+        Then $U$ is an open neighborhood of $p$ in $M \# N$. The preimage $\pi^{-1}(U) \subset \widetilde{W}$ 
+        consists of $k$ disjoint open sets $W_1, \dots, W_k$, where each $W_i$ is formed by gluing 
+        $V_i \cap \widetilde{M}'$ and $\phi_i^{-1}(U_N)$ along their matching boundaries via $g_i$:
+        $$W_i := \left( (V_i \cap \widetilde{M}') \;\sqcup\; \phi_i^{-1}(U_N) \right) \Big/ \Big\{ z \sim g_i(z) \;\Big\vert{}\; z \in \partial \widetilde{D}_i \cap V_i \Big\}.$$
+        Thus, $\pi\vert{}_{W_i} : W_i \to U$ is a homeomorphism for each $i$, showing that $U$ is evenly covered.
+
+    Conclusion: $\pi : \widetilde{W} \to M \# N$ is a continuous, surjective local homeomorphism, and thus a covering 
+    map.
+
+    \end{enumerate}
 
     \end{proof}
 \end{problem}
