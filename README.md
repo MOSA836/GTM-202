@@ -23,8 +23,8 @@ An archive of exercise solutions and proofs from my journey learning topology. U
 - **Problem 11-10**: A covering map is proper if and only if it is a finite-sheeted covering.
 - **Problem 11-11**: The total space $E$ of a covering is compact if and only if the base space $X$ is compact and the covering is finite-sheeted.
 - **Double Cover of the Klein Bottle**: A proof of the two-sheeted covering of the Klein bottle by the 2-torus, utilizing coset decompositions and quotient topologies.
-- **k-sheeted covered of connected sum**: A proof of the k-sheeted covering of the connected sum $M \# N$ by a manifold of the form 
-$\widetilde{M} \# N \# \cdots \# N$, utilizing the ball to be cut out of $M$ to lie inside an evenly covered neighborhood.
+- **k-sheeted covered of connected sum**: A proof of the k-sheeted covering of the connected sum $M # N$ by a manifold of the form 
+$\widetilde{M} # N # cdots # N$, utilizing the ball to be cut out of $M$ to lie inside an evenly covered neighborhood.
 
 ## Compilation Details
 
