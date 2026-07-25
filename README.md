@@ -17,7 +17,7 @@ An archive of exercise solutions and proofs from my journey learning topology. U
 
 ### Concrete Covering Space Examples
 - **Problem 11-2**: A proof that for any $n \geq 1$, the map $q: S^n \to \mathbb{P}^n$ defined by sending each point $x \in S^n$ to the line through the origin and $x$ is a covering map. 
-- **Problem 11-3**: Analysis of the Riemann surface model $S = \{(z, w) \in \mathbb{C}^2 : w^2 = z, w \neq 0\}$. Show that the coordinate projection $\pi_1: \mathbb{C}^2 \to \mathbb{C}$ restricts to a two-sheeted covering map $q: S \to \mathbb{C} \setminus {0}$.
+- **Problem 11-3**: Analysis of the Riemann surface model $S = \{(z, w) \in \mathbb{C}^2 : w^2 = z, w \neq 0\}$. Show that the coordinate projection $\pi_1: \mathbb{C}^2 \to \mathbb{C}$ restricts to a two-sheeted covering map $q: S \to \mathbb{C} \setminus \{0\}$.
 
 ### Compactness and Proper Maps
 - **Problem 11-10**: A covering map is proper if and only if it is a finite-sheeted covering.
